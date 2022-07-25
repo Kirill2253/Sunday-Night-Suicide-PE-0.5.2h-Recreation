@@ -35,8 +35,8 @@ class MainMenuState extends MusicBeatState
 	var optionShit:Array<String> = [
 		'story_mode',
 		'freeplay',
-		#if MODS_ALLOWED 'mods', #end
-		#if ACHIEVEMENTS_ALLOWED 'awards', #end
+		//#if MODS_ALLOWED 'mods', #end
+		//#if ACHIEVEMENTS_ALLOWED 'awards', #end
 		'credits',
 		#if !switch 'donate', #end
 		'options'
@@ -123,7 +123,31 @@ class MainMenuState extends MusicBeatState
 			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
 			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
 			menuItem.updateHitbox();
-		}
+		        switch (i) 
+                        {
+                            case 0:
+                                menuItem.x -= 300;
+                                menuItem.y -= 100;
+                            case 1:
+                                menuItem.x -= 300; 
+                                menuItem.y -= 100;
+                            case 2: 
+                                menuItem.x -= 300;
+                                menuItem.y -= 100;
+                            case 3:
+                                menuItem.x -= 300;
+                                menuItem.y -= 100;
+                            case 4:
+                                menuItem.x -= 300;
+                                menuItem.y -= 100;
+                            case 5:
+                                menuItem.x -= 300;
+                                menuItem.y -= 100;
+                            case 6:
+                                menuItem.x -= 300;
+                                menuItem.y -= 100;
+                       }
+                }
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
@@ -131,7 +155,7 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Sunday Night Suicide' v" + Application.current.meta.get('version'), 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -235,19 +259,19 @@ class MainMenuState extends MusicBeatState
 
 								switch (daChoice)
 								{
-									case 'story_mode':
+									case 'Story_Mode':
 										MusicBeatState.switchState(new StoryMenuState());
-									case 'freeplay':
+									case 'Freeplay':
 										MusicBeatState.switchState(new FreeplayState());
 									#if MODS_ALLOWED
-									case 'mods':
+									case 'Mods':
 										MusicBeatState.switchState(new ModsMenuState());
 									#end
-									case 'awards':
+									case 'Awards':
 										MusicBeatState.switchState(new AchievementsMenuState());
-									case 'credits':
+									case 'Credits':
 										MusicBeatState.switchState(new CreditsState());
-									case 'options':
+									case 'Options':
 										LoadingState.loadAndSwitchState(new options.OptionsState());
 								}
 							});
